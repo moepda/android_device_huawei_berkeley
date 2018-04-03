@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2018 The LineageOS Project
+# Copyright 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 # NFC config
 PRODUCT_COPY_FILES += \
@@ -22,15 +20,15 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/treble_common.mk)
+$(call inherit-product, vendor/du/config/common_full_phone.mk)
 
 # Inherit from berkeley device
 $(call inherit-product, device/huawei/berkeley/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-# Device identifier. This must come after all inclusions
+# Override Product Name for DirtyUnicorns
+PRODUCT_NAME := du_berkeley
 PRODUCT_DEVICE := berkeley
-PRODUCT_NAME := lineage_berkeley
 PRODUCT_BRAND := Huawei
 PRODUCT_MODEL := berkeley
+
+BUILD_FINGERPRINT := kirin970/kirin970/kirin970:8.1.0/OPM1.171019.011/jslave01241654:user/test-keys
